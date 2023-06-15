@@ -31,3 +31,10 @@ class Item(models.Model):
 
 class ItemJSON(models.Model):
     item_json = models.JSONField()
+
+
+class RecordMetadata(models.Model):
+    record_type_code = models.CharField(max_length=255)
+    record_num = models.IntegerField()
+    created_date = models.DateTimeField()
+    updated_date = models.DateTimeField()

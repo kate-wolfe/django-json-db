@@ -13,7 +13,7 @@ def get_items():
     get_items_params = {
         "limit": 2000,
         "fields": "id",
-        "updatedDate": "2023-06-14",
+        "updatedDate": "2023-06-15",
         "deleted": "false",
         "suppressed": "false",
     }
@@ -29,3 +29,12 @@ def get_items():
         entryList.append(entry)
 
     return entryList
+
+
+def get_item(item_id):
+    session = authenticate_session(requests.Session())
+    get_item_url = env("ITEMS_URL")
+    result = session.get(get_item_url + item_id + "?fields=id,fixedFields,varFields")
+
+    resultJSON = result.json()
+    return resultJSON
